@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  color-scheme: dark;
+  --grid-color: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  background: radial-gradient(circle at 15% 20%, rgba(5, 255, 161, 0.25), transparent 40%),
+    radial-gradient(circle at 85% 10%, rgba(255, 113, 206, 0.2), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(0, 194, 255, 0.18), transparent 50%),
+    #0f0d15;
+  min-height: 100vh;
+  color: #f5f5f5;
+}
+
+.brutal-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 120px 120px;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.55), transparent 65%);
+}
+
+.section-pin {
+  scroll-margin-top: 120px;
+}
+
+.text-outline {
+  -webkit-text-stroke: 2px #fbff12;
+  color: transparent;
+}
+
+.neon-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.neon-border::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(125deg, #fbff12, #ff71ce, #05ffa1, #00c2ff, #fbff12);
+  background-size: 200% 200%;
+  animation: borderFlow 6s linear infinite;
+  filter: blur(6px);
+  z-index: -1;
+}
+
+@keyframes borderFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@layer utilities {
+  .clip-skew {
+    clip-path: polygon(0% 10%, 100% 0%, 100% 90%, 0% 100%);
+  }
+
+  .sketch-shadow {
+    box-shadow: 14px 14px 0px rgba(251, 255, 18, 0.9), 28px 28px 0px rgba(0, 194, 255, 0.6);
+  }
+
+  .brutal-shadow {
+    box-shadow: 12px 12px 0px #fbff12, 12px 12px 30px rgba(251, 255, 18, 0.4);
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 120px 120px;
+  }
+}
